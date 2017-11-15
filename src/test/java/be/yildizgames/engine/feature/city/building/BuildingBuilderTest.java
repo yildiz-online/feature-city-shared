@@ -61,7 +61,7 @@ class BuildingBuilderTest {
     @Test
     void testGetBuilderId() {
         Building building = new BaseBuilding(BaseBuildingTest.OK_CITY, BaseBuildingTest.OK_DATA, BaseBuildingTest.OK_POSITION, BaseBuildingTest.OK_LEVEL, BaseBuildingTest.OK_STAFF);
-        Builder b = new DummyBuildingBuilder(building);
+        BuildingBuilder<Building> b = new DummyBuildingBuilder(building);
         Assertions.assertEquals(EntityId.valueOf(10L), b.getBuilderId());
     }
 
@@ -89,16 +89,11 @@ class BuildingBuilderTest {
          * @param building Associated building.
          */
         DummyBuildingBuilder(Building building) {
-            super(EntityId.valueOf(10L), PlayerId.WORLD, Point3D.valueOf(10, 15, 20), building, 5);
+            super(EntityId.valueOf(10L), PlayerId.WORLD, Point3D.valueOf(10, 15, 20), building);
         }
 
         DummyBuildingBuilder(EntityId builderId, PlayerId world, Point3D xyz, Building building) {
-            super(builderId, world, xyz, building, 5);
-        }
-
-        @Override
-        public boolean fullfilPrerequisite(ConstructionData type) {
-            return true;
+            super(builderId, world, xyz, building);
         }
     }
 
