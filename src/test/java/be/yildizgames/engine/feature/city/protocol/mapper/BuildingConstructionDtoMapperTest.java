@@ -22,47 +22,35 @@
  *
  */
 
-package be.yildizgames.engine.feature.city.building;
+package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import be.yildiz.common.Level;
+import be.yildiz.common.id.EntityId;
+import be.yildizgames.common.mapping.BaseMapperTest;
+import be.yildizgames.engine.feature.city.building.BuildingPosition;
+import be.yildizgames.engine.feature.city.building.BuildingType;
+import be.yildizgames.engine.feature.city.building.staff.Staff;
+import be.yildizgames.engine.feature.city.protocol.BuildingConstructionDto;
+import org.junit.jupiter.api.BeforeAll;
 
 /**
  * @author Grégory Van den Borre
  */
-@SuppressWarnings("boxing")
-final class LevelTest {
+class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingConstructionDto> {
 
-    @SuppressWarnings("null")
-    @Test
-    void testEnergy() {
-        Level d = Level.valueOf(10);
-        Assertions.assertEquals(10, d.value, 0.000001f);
-        d = Level.ZERO;
-        Assertions.assertEquals(0, d.value, 0.000001f);
+    @BeforeAll
+    static void init() {
+        new BuildingType(143, "test");
     }
 
-    @Test
-    void testEnergy2() {
-        Assertions.assertThrows(AssertionError.class, () -> Level.valueOf(-10));
+    BuildingConstructionDtoMapperTest() {
+        super(new BuildingConstructionDtoMapper(),
+                new BuildingConstructionDto(
+                        EntityId.valueOf(3),
+                        BuildingType.valueOf(143),
+                        Level.valueOf(1),
+                        BuildingPosition.valueOf(5),
+                        Staff.valueOf(2)
+                ));
     }
-
-    @Test
-    void testHashCode() {
-        Level d1 = Level.valueOf(5);
-        Level d2 = Level.valueOf(5);
-        Assertions.assertEquals(d2.hashCode(), d1.hashCode());
-    }
-
-    @Test
-    void testEquals() {
-        Level d1 = Level.valueOf(5);
-        Level d2 = Level.valueOf(5);
-        Level d3 = Level.valueOf(6);
-        Assertions.assertEquals(d1, d1);
-        Assertions.assertEquals(d1, d2);
-        Assertions.assertNotEquals(d1, new Object());
-        Assertions.assertNotEquals(d1, d3);
-    }
-
 }

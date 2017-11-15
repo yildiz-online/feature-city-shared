@@ -39,7 +39,7 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
         try {
             return new BuildingConstructionDto(
                     EntityIdMapper.getInstance().from(v[0]),
-                    EntityTypeMapper.getInstance().from(v[1]),
+                    BuildingTypeMapper.getInstance().from(v[1]),
                     LevelMapper.getInstance().from(v[2]),
                     BuildingPositionMapper.getInstance().from(v[3]),
                     StaffMapper.getInstance().from(v[4]),
@@ -55,7 +55,7 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
         assert dto != null;
         return EntityIdMapper.getInstance().to(dto.cityId)
                 + Separator.VAR_SEPARATOR
-                + EntityTypeMapper.getInstance().to(dto.type)
+                + BuildingTypeMapper.getInstance().to(dto.type)
                 + Separator.VAR_SEPARATOR
                 + LevelMapper.getInstance().to(dto.level)
                 + Separator.VAR_SEPARATOR

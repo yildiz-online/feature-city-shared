@@ -22,36 +22,18 @@
  *
  */
 
-package be.yildizgames.engine.feature.city.building;
+package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildiz.common.Level;
+
+import be.yildizgames.common.mapping.BaseMapperTest;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
-import be.yildizgames.engine.feature.resource.bonus.BonusResources;
 
 /**
- * The bonus factory build bonus instance matching a given building with a given level and a given staff.
- *
  * @author Grégory Van den Borre
  */
-public interface BonusFactory {
+public class StaffMapperTest extends BaseMapperTest<Staff> {
 
-    /**
-     * Provide the bonus for the building at the given level, if any.
-     *
-     * @param level Building level.
-     * @return The matching bonus.
-     */
-    BonusResources getLevelBonus(Level level);
-
-    /**
-     * Provide the bonus for the allocated staff.
-     *
-     * @param staff Allocated staff.
-     * @return The matching bonus.
-     */
-    //@requires staff >= 0.
-    BonusResources getStaffBonus(Staff staff);
-
-    boolean hasRatioBonus();
-
+    public StaffMapperTest() {
+        super(StaffMapper.getInstance(), Staff.valueOf(5));
+    }
 }

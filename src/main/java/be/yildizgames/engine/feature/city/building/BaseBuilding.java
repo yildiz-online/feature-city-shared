@@ -24,6 +24,7 @@
 
 package be.yildizgames.engine.feature.city.building;
 
+import be.yildiz.common.Level;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.util.Checker;
 import be.yildizgames.engine.feature.city.building.staff.Staff;

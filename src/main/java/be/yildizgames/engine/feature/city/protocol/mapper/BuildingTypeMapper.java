@@ -22,54 +22,36 @@
  *
  */
 
-package be.yildizgames.engine.feature.city.building;
+package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildiz.common.ValueObject;
-import be.yildiz.common.util.Checker;
+import be.yildizgames.common.mapping.IntegerMapper;
+import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.mapping.ObjectMapper;
+import be.yildizgames.engine.feature.city.building.BuildingType;
 
 /**
- * Simple wrapper class to represent level.
- * Immutable class.
- *
  * @author Grégory Van den Borre
  */
-public final class Level extends ValueObject {
+public class BuildingTypeMapper implements ObjectMapper<BuildingType> {
 
-    /**
-     * Constant for 0.
-     */
-    public static final Level ZERO = new Level(0);
+    private static final BuildingTypeMapper INSTANCE = new BuildingTypeMapper();
 
-    /**
-     * Constant for 1.
-     */
-    public static final Level ONE = new Level(1);
-
-    /**
-     * Full constructor.
-     *
-     * @param level Level value.
-     */
-    private Level(final int level) {
-        super(level);
-        Checker.exceptionNotPositive(level);
+    private BuildingTypeMapper() {
+        super();
     }
 
-    public static Level valueOf(int level) {
-        return new Level(level);
+    public static BuildingTypeMapper getInstance() {
+        return INSTANCE;
     }
 
-    /**
-     * Create a new Level base on the result of this one added to a value.
-     *
-     * @param toAdd Value to add to this level to get the new one.
-     * @return A new Level resulting of the sum.
-     */
-    public Level add(final int toAdd) {
-        return new Level(this.value + toAdd);
+    @Override
+    public BuildingType from(String s) throws MappingException {
+        return BuildingType.valueOf(IntegerMapper.getInstance().from(s));
     }
 
-    public boolean isNotZero() {
-        return this.value > 0;
+    @Override
+    public String to(BuildingType type) {
+        assert type != null;
+        return String.valueOf(type.type);
     }
 }
