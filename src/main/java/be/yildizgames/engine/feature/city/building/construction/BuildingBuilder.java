@@ -53,7 +53,7 @@ public abstract class BuildingBuilder<B extends Building> {
     /**
      * Associated building.
      */
-    private final Building building;
+    private final B building;
 
     /**
      * Player owning this building.
