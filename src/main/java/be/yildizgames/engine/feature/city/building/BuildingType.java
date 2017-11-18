@@ -72,14 +72,19 @@ public final class BuildingType {
     //@ensures BuildingType.MAP.get(value) == this;
     //@ensures this.type = value;
     //@ensures this.name = name;
-    public BuildingType(final int value, final String name) {
+    private BuildingType(final int value, final String name) {
         super();
-        assert !BuildingType.MAP.containsKey(value) : "Type already exists";
-
         this.name = name;
         this.type = value;
         BuildingType.MAP.putIfAbsent(value, this);
         assert this.invariant();
+    }
+
+    public static BuildingType register(int value, String name) {
+        if(BuildingType.MAP.containsKey(value)) {
+            throw new IllegalArgumentException("Value already registered.");
+        }
+        return new BuildingType(value, name);
     }
 
     /**

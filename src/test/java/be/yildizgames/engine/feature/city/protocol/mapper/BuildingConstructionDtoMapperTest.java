@@ -40,7 +40,7 @@ class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingConstruct
 
     @BeforeAll
     static void init() {
-        new BuildingType(143, "test");
+         BuildingType.register(143, "test");
     }
 
     BuildingConstructionDtoMapperTest() {
