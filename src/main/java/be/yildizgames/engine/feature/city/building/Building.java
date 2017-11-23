@@ -24,8 +24,7 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildiz.common.Level;
-import be.yildiz.common.id.EntityId;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 import be.yildizgames.engine.feature.resource.bonus.BonusResources;
@@ -58,7 +57,7 @@ public interface Building {
      * @return The id of the city containing this building.
      */
     //@Ensures result != null.
-    EntityId getCity();
+    CityId getCity();
 
     /**
      * Staff currently assigned.

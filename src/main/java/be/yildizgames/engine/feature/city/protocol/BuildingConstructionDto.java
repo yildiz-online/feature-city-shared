@@ -26,10 +26,13 @@ package be.yildizgames.engine.feature.city.protocol;
 
 import be.yildiz.common.Level;
 import be.yildiz.common.id.EntityId;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingPosition;
 import be.yildizgames.engine.feature.city.building.BuildingType;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
+
+import java.time.Duration;
 
 /**
  * @author Grégory Van den Borre
@@ -62,11 +65,11 @@ public class BuildingConstructionDto {
     public final Staff staff;
 
     /**
-     * Time when the building will be completed.
+     * Time left before the building is completed completed.
      */
-    public final long time;
+    public final Duration time;
 
-    public BuildingConstructionDto(EntityId cityId, BuildingType type, Level level, BuildingPosition position, Staff staff, long time) {
+    public BuildingConstructionDto(CityId cityId, BuildingType type, Level level, BuildingPosition position, Staff staff, Duration time) {
         super();
         this.cityId = cityId;
         this.type = type;
@@ -76,11 +79,11 @@ public class BuildingConstructionDto {
         this.time = time;
     }
 
-    public BuildingConstructionDto(EntityId cityId, BuildingType type, Level level, BuildingPosition position, Staff staff) {
+    public BuildingConstructionDto(CityId cityId, BuildingType type, Level level, BuildingPosition position, Staff staff) {
         this(cityId, type, level, position, staff, 0);
     }
 
-    public BuildingConstructionDto(Building b, long time) {
+    public BuildingConstructionDto(Building b, Duration time) {
         this(b.getCity(), b.getType(), b.getLevel(), b.getBuildingPosition(), b.getStaff(), time);
     }
 
