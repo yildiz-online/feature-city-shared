@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.city;
 
-import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
@@ -38,9 +37,9 @@ import java.util.Set;
  */
 public interface CityManager<T extends Building, D extends BuildingData, C extends City<T, D>> {
 
-    C createCity(EntityId id, PlayerId owner);
+    C createCity(CityId id, PlayerId owner);
 
-    C getCityById(EntityId id);
+    C getCityById(CityId id);
 
     List<C> getCities();
 

@@ -24,10 +24,10 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildiz.common.Level;
-import be.yildiz.common.id.EntityId;
 import be.yildiz.common.util.Checker;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
+import be.yildizgames.engine.feature.entity.Level;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 import be.yildizgames.engine.feature.resource.bonus.BonusResources;
 
@@ -43,7 +43,7 @@ public final class BaseBuilding implements Building {
     /**
      * BaseCity containing this building.
      */
-    private final EntityId city;
+    private final CityId city;
 
     /**
      * Building type.
@@ -81,7 +81,7 @@ public final class BaseBuilding implements Building {
      * @throws NullPointerException     If any parameter is null.
      * @throws IllegalArgumentException If level is above max level, if staff is negative or if staff if above max for the current level.
      */
-    public BaseBuilding(final EntityId city, final BuildingData data, final BuildingPosition buildingPosition, final Level level, final Staff staff) {
+    public BaseBuilding(final CityId city, final BuildingData data, final BuildingPosition buildingPosition, final Level level, final Staff staff) {
         super();
         assert city != null;
         assert data != null;
@@ -155,7 +155,7 @@ public final class BaseBuilding implements Building {
     }
 
     @Override
-    public EntityId getCity() {
+    public CityId getCity() {
         return city;
     }
 

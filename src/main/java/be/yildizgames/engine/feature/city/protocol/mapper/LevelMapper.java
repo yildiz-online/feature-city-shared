@@ -24,9 +24,9 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildiz.common.Level;
 import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
+import be.yildizgames.engine.feature.entity.Level;
 
 /**
  * @author Grégory Van den Borre

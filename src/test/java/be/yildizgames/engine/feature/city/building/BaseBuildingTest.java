@@ -24,9 +24,9 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildiz.common.Level;
-import be.yildiz.common.id.EntityId;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
+import be.yildizgames.engine.feature.entity.Level;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 import be.yildizgames.engine.feature.resource.bonus.BonusResources;
 import org.junit.jupiter.api.Assertions;
@@ -41,7 +41,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class BaseBuildingTest {
 
-    public static final EntityId OK_CITY = EntityId.valueOf(6L);
+    public static final CityId OK_CITY = CityId.valueOf(6);
 
     public static final Staff OK_STAFF = Staff.valueOf(2);
 

@@ -27,6 +27,7 @@ package be.yildizgames.engine.feature.city.building.construction;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.PlayerId;
 import be.yildiz.common.vector.Point3D;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.Building;
 
 /**
@@ -80,7 +81,7 @@ public abstract class BuildingBuilder<B extends Building> {
         this.owner = owner;
     }
 
-    public EntityId getCity() {
+    public CityId getCity() {
         return this.building.getCity();
     }
 

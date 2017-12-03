@@ -22,23 +22,40 @@
  *
  */
 
-package be.yildizgames.engine.feature.city;
+package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.engine.feature.city.building.Building;
-import be.yildizgames.engine.feature.city.building.BuildingData;
+import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.mapping.ObjectMapper;
+import be.yildizgames.engine.feature.city.CityId;
 
 /**
  * @author Grégory Van den Borre
  */
-public class BaseCityManagerMock extends BaseCityManager<Building, BuildingData, BaseCity<Building, BuildingData>> {
+public class CityIdMapper implements ObjectMapper<CityId> {
 
+    private static final CityIdMapper INSTANCE = new CityIdMapper();
 
-    public BaseCityManagerMock() {
-        super(new BuildingTypeFactoryMock());
+    private CityIdMapper() {
+        super();
+    }
+
+    public static CityIdMapper getInstance() {
+        return INSTANCE;
     }
 
     @Override
-    protected BaseCity<Building, BuildingData> createCityImpl(CityId id) {
-        return null;// new BaseCity<>(id, new ResourceValue(new float[]{1000, 1000, 1000}), new Point3D[]{}, new HashMap<>());
+    public CityId from(String s) throws MappingException {
+        assert s != null;
+        try {
+            return CityId.valueOf(Integer.parseInt(s));
+        } catch (final NumberFormatException nfe) {
+            throw new MappingException("Error retrieving id", nfe);
+        }
+    }
+
+    @Override
+    public String to(CityId cityId) {
+        assert cityId != null;
+        return String.valueOf(cityId.value);
     }
 }

@@ -24,8 +24,13 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.mapping.*;
+import be.yildizgames.common.mapping.LongMapper;
+import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.mapping.ObjectMapper;
+import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.engine.feature.city.protocol.BuildingConstructionDto;
+
+import java.time.Duration;
 
 /**
  * @author Grégory Van den Borre
@@ -38,12 +43,12 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
         String[] v = s.split(Separator.VAR_SEPARATOR);
         try {
             return new BuildingConstructionDto(
-                    EntityIdMapper.getInstance().from(v[0]),
+                    CityIdMapper.getInstance().from(v[0]),
                     BuildingTypeMapper.getInstance().from(v[1]),
                     LevelMapper.getInstance().from(v[2]),
                     BuildingPositionMapper.getInstance().from(v[3]),
                     StaffMapper.getInstance().from(v[4]),
-                    LongMapper.getInstance().from(v[5])
+                    Duration.ofMillis(LongMapper.getInstance().from(v[5]))
             );
         } catch (IndexOutOfBoundsException e) {
             throw new MappingException(e);
@@ -53,7 +58,7 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
     @Override
     public String to(BuildingConstructionDto dto) {
         assert dto != null;
-        return EntityIdMapper.getInstance().to(dto.cityId)
+        return CityIdMapper.getInstance().to(dto.cityId)
                 + Separator.VAR_SEPARATOR
                 + BuildingTypeMapper.getInstance().to(dto.type)
                 + Separator.VAR_SEPARATOR
@@ -63,6 +68,6 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
                 + Separator.VAR_SEPARATOR
                 + StaffMapper.getInstance().to(dto.staff)
                 + Separator.VAR_SEPARATOR
-                + LongMapper.getInstance().to(dto.time);
+                + LongMapper.getInstance().to(dto.time.toMillis());
     }
 }

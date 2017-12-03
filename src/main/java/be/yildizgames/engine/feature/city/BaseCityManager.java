@@ -55,7 +55,7 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
     /**
      * List of all BaseCity, by Id.
      */
-    private final Map<EntityId, C> cities = Maps.newMap();
+    private final Map<CityId, C> cities = Maps.newMap();
 
     private final BuildingTypeFactory<T, D> typeFactory;
 
@@ -71,17 +71,17 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
      * @param id Associated entity.
      */
     @Override
-    public C createCity(final EntityId id, PlayerId owner) {
+    public C createCity(final CityId id, PlayerId owner) {
         C city = this.createCityImpl(id);
         CollectionUtil.getOrCreateSetFromMap(this.cityList, owner).add(city);
         this.cities.put(id, city);
         return city;
     }
 
-    protected abstract C createCityImpl(final EntityId id);
+    protected abstract C createCityImpl(final CityId id);
 
     @Override
-    public C getCityById(final EntityId id) {
+    public C getCityById(final CityId id) {
         return this.cities.get(id);
     }
 

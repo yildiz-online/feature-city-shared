@@ -24,13 +24,12 @@
 
 package be.yildizgames.engine.feature.city.protocol;
 
-import be.yildiz.common.Level;
-import be.yildiz.common.id.EntityId;
 import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingPosition;
 import be.yildizgames.engine.feature.city.building.BuildingType;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
+import be.yildizgames.engine.feature.entity.Level;
 
 import java.time.Duration;
 
@@ -42,7 +41,7 @@ public class BuildingConstructionDto {
     /**
      * Id of the base containing the building.
      */
-    public final EntityId cityId;
+    public final CityId cityId;
 
     /**
      * Type of the building.
@@ -80,7 +79,7 @@ public class BuildingConstructionDto {
     }
 
     public BuildingConstructionDto(CityId cityId, BuildingType type, Level level, BuildingPosition position, Staff staff) {
-        this(cityId, type, level, position, staff, 0);
+        this(cityId, type, level, position, staff, Duration.ZERO);
     }
 
     public BuildingConstructionDto(Building b, Duration time) {
@@ -98,22 +97,7 @@ public class BuildingConstructionDto {
 
         BuildingConstructionDto that = (BuildingConstructionDto) o;
 
-        if (time != that.time) {
-            return false;
-        }
-        if (!cityId.equals(that.cityId)) {
-            return false;
-        }
-        if (!type.equals(that.type)) {
-            return false;
-        }
-        if (!level.equals(that.level)) {
-            return false;
-        }
-        if (!position.equals(that.position)) {
-            return false;
-        }
-        return staff.equals(that.staff);
+        return time == that.time && cityId.equals(that.cityId) && type.equals(that.type) && level.equals(that.level) && position.equals(that.position) && staff.equals(that.staff);
     }
 
     @Override
@@ -123,7 +107,6 @@ public class BuildingConstructionDto {
         result = 31 * result + level.hashCode();
         result = 31 * result + position.hashCode();
         result = 31 * result + staff.hashCode();
-        result = 31 * result + (int) (time ^ (time >>> 32));
         return result;
     }
 }

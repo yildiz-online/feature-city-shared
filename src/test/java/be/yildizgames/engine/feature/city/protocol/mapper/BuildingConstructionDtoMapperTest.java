@@ -24,13 +24,13 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildiz.common.Level;
-import be.yildiz.common.id.EntityId;
 import be.yildizgames.common.mapping.BaseMapperTest;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.BuildingPosition;
 import be.yildizgames.engine.feature.city.building.BuildingType;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 import be.yildizgames.engine.feature.city.protocol.BuildingConstructionDto;
+import be.yildizgames.engine.feature.entity.Level;
 import org.junit.jupiter.api.BeforeAll;
 
 /**
@@ -46,7 +46,7 @@ class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingConstruct
     BuildingConstructionDtoMapperTest() {
         super(new BuildingConstructionDtoMapper(),
                 new BuildingConstructionDto(
-                        EntityId.valueOf(3),
+                        CityId.valueOf(3),
                         BuildingType.valueOf(143),
                         Level.valueOf(1),
                         BuildingPosition.valueOf(5),
