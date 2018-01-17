@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildiz.common.ValueObject;
-import be.yildiz.common.util.Checker;
+import be.yildizgames.common.util.Checker;
+import be.yildizgames.common.util.ValueObject;
 
 /**
  * Simple wrapper class to represent the building position in a city.

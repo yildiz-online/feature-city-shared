@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.city;
 
-import be.yildiz.common.id.PlayerId;
+import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
 import be.yildizgames.engine.feature.city.building.BuildingType;

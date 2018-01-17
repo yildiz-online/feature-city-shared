@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildiz.common.id.EntityId;
 import be.yildizgames.common.mapping.BaseMapperTest;
+import be.yildizgames.common.model.EntityId;
 import be.yildizgames.engine.feature.city.building.BuildingPosition;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 import be.yildizgames.engine.feature.city.protocol.StaffAllocationDto;

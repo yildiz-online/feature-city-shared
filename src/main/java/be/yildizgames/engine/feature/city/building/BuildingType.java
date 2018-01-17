@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildiz.common.collections.Maps;
+import be.yildizgames.common.collection.Maps;
 
 import java.util.Map;
 

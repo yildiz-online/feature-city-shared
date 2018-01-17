@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.city;
 
-import be.yildiz.common.ValueObject;
+import be.yildizgames.common.util.ValueObject;
 
 /**
  * @author Grégory Van den Borre

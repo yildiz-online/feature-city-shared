@@ -24,11 +24,10 @@
 
 package be.yildizgames.engine.feature.city;
 
-import be.yildiz.common.collections.CollectionUtil;
-import be.yildiz.common.collections.Lists;
-import be.yildiz.common.collections.Maps;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.PlayerId;
+import be.yildizgames.common.collection.CollectionUtil;
+import be.yildizgames.common.collection.Lists;
+import be.yildizgames.common.collection.Maps;
+import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
 import be.yildizgames.engine.feature.city.building.BuildingType;

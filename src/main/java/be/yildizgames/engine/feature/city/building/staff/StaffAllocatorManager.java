@@ -23,9 +23,9 @@
 
 package be.yildizgames.engine.feature.city.building.staff;
 
-import be.yildiz.common.collections.Lists;
-import be.yildiz.common.collections.Sets;
-import be.yildiz.common.framelistener.EndFrameListener;
+import be.yildizgames.common.collection.Lists;
+import be.yildizgames.common.collection.Sets;
+import be.yildizgames.common.frame.EndFrameListener;
 import be.yildizgames.engine.feature.city.City;
 import be.yildizgames.engine.feature.city.CityManager;
 import be.yildizgames.engine.feature.city.building.Building;

@@ -23,8 +23,8 @@
 
 package be.yildizgames.engine.feature.city.building.staff;
 
-import be.yildiz.common.ValueObject;
-import be.yildiz.common.util.Checker;
+import be.yildizgames.common.util.Checker;
+import be.yildizgames.common.util.ValueObject;
 
 /**
  * @author Grégory Van den Borre
