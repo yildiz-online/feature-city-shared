@@ -25,7 +25,6 @@
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
 
-import be.yildizgames.common.mapping.BaseMapperTest;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 
 /**

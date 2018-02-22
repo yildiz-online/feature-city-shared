@@ -22,51 +22,55 @@
  *
  */
 
-
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
 import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
-import be.yildizgames.common.mapping.model.EntityIdMapper;
-import be.yildizgames.engine.feature.city.protocol.StaffAllocationDto;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 
 /**
  * @author Grégory Van den Borre
  */
-public class StaffAllocationDtoMapper implements ObjectMapper<StaffAllocationDto> {
+public abstract class BaseMapperTest<T>{
 
-    private static final StaffAllocationDtoMapper INSTANCE = new StaffAllocationDtoMapper();
+    private final ObjectMapper<T> mapper;
+    private final T baseObject;
 
-    private StaffAllocationDtoMapper() {
-        super();
+    protected BaseMapperTest(ObjectMapper<T> mapper, T baseObject) {
+        this.mapper = mapper;
+        this.baseObject = baseObject;
     }
 
-    public static StaffAllocationDtoMapper getInstance() {
-        return INSTANCE;
+    @Test
+    void happyFlow() throws MappingException {
+        String to = mapper.to(baseObject);
+        T from = mapper.from(to);
+        Assertions.assertEquals(baseObject, from);
     }
 
-    @Override
-    public StaffAllocationDto from(String s) throws MappingException {
-        assert s != null;
-        String[] v = s.split(Separator.OBJECTS_SEPARATOR);
-        try {
-            return new StaffAllocationDto(EntityIdMapper.getInstance().from(v[0]),
-                    BuildingPositionMapper.getInstance().from(v[1]),
-                    StaffMapper.getInstance().from(v[2])
-                    );
-        } catch (IndexOutOfBoundsException e) {
-            throw new MappingException(e);
+    @Test
+    void tooShort() throws MappingException {
+        String to = mapper.to(baseObject);
+        if (to.contains(Separator.OBJECTS_SEPARATOR)) {
+            Assertions.assertThrows(MappingException.class, () -> mapper.from(to.substring(0, to.indexOf(Separator.OBJECTS_SEPARATOR))));
+        } else if (to.contains(Separator.VAR_SEPARATOR)) {
+            Assertions.assertThrows(MappingException.class, () -> mapper.from(to.substring(0, to.indexOf(Separator.VAR_SEPARATOR))));
+        } else {
+            Assertions.assertThrows(MappingException.class, () -> mapper.from(""));
         }
     }
 
-    @Override
-    public String to(StaffAllocationDto dto) {
-        assert dto != null;
-        return EntityIdMapper.getInstance().to(dto.cityId)
-                + Separator.OBJECTS_SEPARATOR
-                + BuildingPositionMapper.getInstance().to(dto.position)
-                + Separator.OBJECTS_SEPARATOR
-                + StaffMapper.getInstance().to(dto.staff);
+    @Test
+    void fromNull() throws MappingException {
+        Assertions.assertThrows(AssertionError.class, () -> mapper.from(null));
     }
+
+    @Test
+    void toNull() {
+        Assertions.assertThrows(AssertionError.class, () -> mapper.to(null));
+    }
+
 }

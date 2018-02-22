@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.city;
 
-import be.yildizgames.common.collection.Lists;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.model.PlayerId;
@@ -35,6 +34,7 @@ import be.yildizgames.engine.feature.city.building.BuildingType;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 import be.yildizgames.engine.feature.resource.ResourcesProducer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +97,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
         this.position = position;
         this.owner = owner;
         this.datas = datas;
-        this.buildings = Lists.newList();
+        this.buildings = new ArrayList<>();
         this.positionOffset = Arrays.copyOf(positionOffset, positionOffset.length);
         for (int i = 0; i < this.positionOffset.length; i++) {
             this.positionOffset[i] = this.positionOffset[i].add(position);
@@ -158,7 +158,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
 
     @Override
     public List<D> getAllType() {
-        return Lists.newList(this.datas.values());
+        return new ArrayList<>(this.datas.values());
     }
 
     @Override

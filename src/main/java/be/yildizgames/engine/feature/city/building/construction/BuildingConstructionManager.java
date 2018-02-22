@@ -24,17 +24,17 @@
 
 package be.yildizgames.engine.feature.city.building.construction;
 
-import be.yildizgames.common.collection.CollectionUtil;
-import be.yildizgames.common.collection.Lists;
-import be.yildizgames.common.collection.Maps;
-import be.yildizgames.common.collection.Sets;
 import be.yildizgames.common.frame.EndFrameListener;
 import be.yildizgames.engine.feature.city.City;
 import be.yildizgames.engine.feature.city.CityManager;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -54,17 +54,17 @@ public class BuildingConstructionManager<B extends Building, D extends BuildingD
     /**
      * List of construction waiting to be build.
      */
-    private final List<WaitingBuilding<B>> constructionToBuildList = Lists.newList();
+    private final List<WaitingBuilding<B>> constructionToBuildList = new ArrayList<>();
 
     /**
      * List of the building to build by city.
      */
-    private final Map<C, Set<WaitingBuilding<B>>> constructionToBuildByCity = Maps.newMap();
+    private final Map<C, Set<WaitingBuilding<B>>> constructionToBuildByCity = new HashMap<>();
 
     /**
      * Listener to notify when a construction is completed.
      */
-    private final Set<BuildingConstructionListener<B, D, C>> listenerList = Sets.newInsertionOrderedSet();
+    private final Set<BuildingConstructionListener<B, D, C>> listenerList = new LinkedHashSet<>();
 
     /**
      * Factory to build the entities.
@@ -93,7 +93,7 @@ public class BuildingConstructionManager<B extends Building, D extends BuildingD
         C city = this.cityManager.getCityById(b.getCity());
         if (timeLeft > 0) {
             WaitingBuilding<B> data = new WaitingBuilding<>(b, timeLeft);
-            CollectionUtil.getOrCreateSetFromMap(this.constructionToBuildByCity, city).add(data);
+            this.constructionToBuildByCity.computeIfAbsent(city, (s) -> new HashSet<>()).add(data);
             this.constructionToBuildList.add(data);
         } else {
             this.associatedFactory.createBuilding(b);
@@ -164,7 +164,7 @@ public class BuildingConstructionManager<B extends Building, D extends BuildingD
      * @return The list of buildings to build for a city.
      */
     public Set<WaitingBuilding<B>> getBuildingList(C c) {
-        return Collections.unmodifiableSet(this.constructionToBuildByCity.getOrDefault(c, Sets.newSet()));
+        return Collections.unmodifiableSet(this.constructionToBuildByCity.computeIfAbsent(c, (s) -> new HashSet<>()));
     }
 
 }

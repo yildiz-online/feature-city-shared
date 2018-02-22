@@ -24,16 +24,16 @@
 
 package be.yildizgames.engine.feature.city;
 
-import be.yildizgames.common.collection.CollectionUtil;
-import be.yildizgames.common.collection.Lists;
-import be.yildizgames.common.collection.Maps;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
 import be.yildizgames.engine.feature.city.building.BuildingType;
 import be.yildizgames.engine.feature.city.building.BuildingTypeFactory;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -49,12 +49,12 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
     /**
      * List of all BaseCity for a Player.
      */
-    private final Map<PlayerId, Set<C>> cityList = Maps.newMap();
+    private final Map<PlayerId, Set<C>> cityList = new HashMap<>();
 
     /**
      * List of all BaseCity, by Id.
      */
-    private final Map<CityId, C> cities = Maps.newMap();
+    private final Map<CityId, C> cities = new HashMap<>();
 
     private final BuildingTypeFactory<T, D> typeFactory;
 
@@ -72,7 +72,7 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
     @Override
     public C createCity(final CityId id, PlayerId owner) {
         C city = this.createCityImpl(id);
-        CollectionUtil.getOrCreateSetFromMap(this.cityList, owner).add(city);
+        this.cityList.computeIfAbsent(owner, (s) -> new HashSet<>()).add(city);
         this.cities.put(id, city);
         return city;
     }
@@ -86,7 +86,7 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
 
     @Override
     public final List<C> getCities() {
-        return Lists.newList(this.cities.values());
+        return new ArrayList<>(this.cities.values());
     }
 
     @Override

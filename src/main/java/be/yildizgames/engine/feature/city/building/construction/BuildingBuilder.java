@@ -29,6 +29,7 @@ import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.Building;
+import be.yildizgames.engine.feature.construction.Builder;
 
 /**
  * A building able to create new entities.
@@ -39,7 +40,7 @@ import be.yildizgames.engine.feature.city.building.Building;
  *
  * @author Grégory Van den Borre
  */
-public abstract class BuildingBuilder<B extends Building> {
+public abstract class BuildingBuilder<B extends Building> implements Builder {
 
     /**
      * Builder unique id.

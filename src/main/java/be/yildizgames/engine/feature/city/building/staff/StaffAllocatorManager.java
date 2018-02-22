@@ -24,14 +24,14 @@
 
 package be.yildizgames.engine.feature.city.building.staff;
 
-import be.yildizgames.common.collection.Lists;
-import be.yildizgames.common.collection.Sets;
 import be.yildizgames.common.frame.EndFrameListener;
 import be.yildizgames.engine.feature.city.City;
 import be.yildizgames.engine.feature.city.CityManager;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -48,12 +48,12 @@ public class StaffAllocatorManager<B extends Building, D extends BuildingData, C
     /**
      * List of building waiting for staff allocation.
      */
-    private final List<BuildingToAllocate<B>> toAllocateList = Lists.newList();
+    private final List<BuildingToAllocate<B>> toAllocateList = new ArrayList<>();
 
     /**
      * List of listeners to notify about allocation changes.
      */
-    private final Set<StaffAllocationListener<B, D, C>> listenerList = Sets.newInsertionOrderedSet();
+    private final Set<StaffAllocationListener<B, D, C>> listenerList = new LinkedHashSet<>();
 
     /**
      *

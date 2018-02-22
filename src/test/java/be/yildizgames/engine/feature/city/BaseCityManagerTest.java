@@ -26,13 +26,13 @@ package be.yildizgames.engine.feature.city;
 
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author Grégory Van den Borre
  */
-@Ignore
+@Disabled
 class BaseCityManagerTest {
 
     @Test

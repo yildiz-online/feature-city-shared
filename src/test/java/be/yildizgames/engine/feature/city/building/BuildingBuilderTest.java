@@ -28,6 +28,7 @@ import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.construction.BuildingBuilder;
+import be.yildizgames.engine.feature.construction.Buildable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -94,6 +95,16 @@ class BuildingBuilderTest {
 
         DummyBuildingBuilder(EntityId builderId, PlayerId world, Point3D xyz, Building building) {
             super(builderId, world, xyz, building);
+        }
+
+        @Override
+        public void cancel(int index) {
+
+        }
+
+        @Override
+        public boolean fullfilPrerequisite(Buildable data) {
+            return true;
         }
     }
 
