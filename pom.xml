@@ -32,7 +32,7 @@
   <url>https://bitbucket.org/yildiz-engine-team/feature-city-shared</url>
 
   <artifactId>feature-city-shared</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 
   <packaging>jar</packaging>
   <inceptionYear>2017</inceptionYear>
