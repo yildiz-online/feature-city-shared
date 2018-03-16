@@ -35,6 +35,9 @@ module be.yildizgames.feature.city.shared {
 
 
     exports be.yildizgames.engine.feature.city;
+    exports be.yildizgames.engine.feature.city.building;
+    exports be.yildizgames.engine.feature.city.building.construction;
+    exports be.yildizgames.engine.feature.city.building.staff;
     exports be.yildizgames.engine.feature.city.protocol;
     exports be.yildizgames.engine.feature.city.protocol.mapper;
 
