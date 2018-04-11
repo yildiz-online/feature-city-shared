@@ -25,7 +25,6 @@
 package be.yildizgames.engine.feature.city;
 
 import be.yildizgames.common.geometry.Point3D;
-import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
@@ -110,7 +109,7 @@ public interface City<T extends Building, D extends BuildingData> extends Resour
      * @return The city unique id.
      */
     //@Ensures ("result != null")
-    EntityId getId();
+    CityId getId();
 
     /**
      * Provide the id of the owner of the city.
