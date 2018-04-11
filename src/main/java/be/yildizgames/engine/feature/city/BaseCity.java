@@ -62,7 +62,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
     /**
      * Associated entity.
      */
-    private final EntityId id;
+    private final CityId id;
 
     /**
      * List of buildings.
@@ -91,7 +91,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
      * @param positionOffset Building positions.
      * @param datas List of building types and their data available.
      */
-    protected BaseCity(final EntityId id, final PlayerId owner, final Point3D position, final ResourceValue initialResource, final Point3D[] positionOffset, Map<BuildingType, D> datas) {
+    protected BaseCity(final CityId id, final PlayerId owner, final Point3D position, final ResourceValue initialResource, final Point3D[] positionOffset, Map<BuildingType, D> datas) {
         super();
         this.id = id;
         this.position = position;
@@ -102,7 +102,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
         for (int i = 0; i < this.positionOffset.length; i++) {
             this.positionOffset[i] = this.positionOffset[i].add(position);
         }
-        this.producer = new ResourcesProducer(id, System.currentTimeMillis(), initialResource);
+        this.producer = new ResourcesProducer(EntityId.valueOf(id.value), System.currentTimeMillis(), initialResource);
     }
 
     @Override
@@ -167,7 +167,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
     }
 
     @Override
-    public EntityId getId() {
+    public CityId getId() {
         return this.id;
     }
 
