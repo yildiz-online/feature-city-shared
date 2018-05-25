@@ -25,11 +25,11 @@
 package be.yildizgames.engine.feature.city.protocol;
 
 import be.yildizgames.engine.feature.city.CityId;
+import be.yildizgames.engine.feature.city.Level;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingPosition;
 import be.yildizgames.engine.feature.city.building.BuildingType;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
-import be.yildizgames.engine.feature.entity.Level;
 
 import java.time.Duration;
 

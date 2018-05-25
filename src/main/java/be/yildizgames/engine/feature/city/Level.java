@@ -22,36 +22,54 @@
  *
  */
 
-package be.yildizgames.engine.feature.city.building;
+package be.yildizgames.engine.feature.city;
 
-import be.yildizgames.engine.feature.city.Level;
-import be.yildizgames.engine.feature.city.building.staff.Staff;
-import be.yildizgames.engine.feature.resource.bonus.BonusResources;
+import be.yildizgames.common.util.Checker;
+import be.yildizgames.common.util.ValueObject;
 
 /**
- * The bonus factory build bonus instance matching a given building with a given level and a given staff.
+ * Simple wrapper class to represent level.
+ * Immutable class.
  *
  * @author Grégory Van den Borre
  */
-public interface BonusFactory {
+public final class Level extends ValueObject {
 
     /**
-     * Provide the bonus for the building at the given level, if any.
-     *
-     * @param level Building level.
-     * @return The matching bonus.
+     * Constant for 0.
      */
-    BonusResources getLevelBonus(Level level);
+    public static final Level ZERO = new Level(0);
 
     /**
-     * Provide the bonus for the allocated staff.
-     *
-     * @param staff Allocated staff.
-     * @return The matching bonus.
+     * Constant for 1.
      */
-    //@requires staff >= 0.
-    BonusResources getStaffBonus(Staff staff);
+    public static final Level ONE = new Level(1);
 
-    boolean hasRatioBonus();
+    /**
+     * Full constructor.
+     *
+     * @param level Level value.
+     */
+    private Level(final int level) {
+        super(level);
+        Checker.exceptionNotPositive(level);
+    }
 
+    public static Level valueOf(int level) {
+        return new Level(level);
+    }
+
+    /**
+     * Create a new Level base on the result of this one added to a value.
+     *
+     * @param toAdd Value to add to this level to get the new one.
+     * @return A new Level resulting of the sum.
+     */
+    public Level add(final int toAdd) {
+        return new Level(this.value + toAdd);
+    }
+
+    public boolean isNotZero() {
+        return this.value > 0;
+    }
 }

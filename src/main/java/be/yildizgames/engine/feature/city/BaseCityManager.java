@@ -24,6 +24,7 @@
 
 package be.yildizgames.engine.feature.city;
 
+import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
@@ -70,14 +71,14 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
      * @param id Associated entity.
      */
     @Override
-    public C createCity(final CityId id, PlayerId owner) {
-        C city = this.createCityImpl(id);
+    public C createCity(final CityId id, PlayerId owner, Point3D position) {
+        C city = this.createCityImpl(id, owner, position);
         this.cityList.computeIfAbsent(owner, (s) -> new HashSet<>()).add(city);
         this.cities.put(id, city);
         return city;
     }
 
-    protected abstract C createCityImpl(final CityId id);
+    protected abstract C createCityImpl(final CityId id, PlayerId owner, Point3D position);
 
     @Override
     public C getCityById(final CityId id) {

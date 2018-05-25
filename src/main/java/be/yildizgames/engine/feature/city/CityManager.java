@@ -24,6 +24,7 @@
 
 package be.yildizgames.engine.feature.city;
 
+import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
@@ -37,7 +38,7 @@ import java.util.Set;
  */
 public interface CityManager<T extends Building, D extends BuildingData, C extends City<T, D>> {
 
-    C createCity(CityId id, PlayerId owner);
+    C createCity(CityId id, PlayerId owner, Point3D position);
 
     C getCityById(CityId id);
 

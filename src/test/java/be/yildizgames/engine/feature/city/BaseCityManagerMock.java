@@ -24,6 +24,8 @@
 
 package be.yildizgames.engine.feature.city;
 
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.PlayerId;
 import be.yildizgames.engine.feature.city.building.Building;
 import be.yildizgames.engine.feature.city.building.BuildingData;
 
@@ -38,7 +40,7 @@ public class BaseCityManagerMock extends BaseCityManager<Building, BuildingData,
     }
 
     @Override
-    protected BaseCity<Building, BuildingData> createCityImpl(CityId id) {
+    protected BaseCity<Building, BuildingData> createCityImpl(CityId id, PlayerId owner, Point3D position) {
         return null;// new BaseCity<>(id, new ResourceValue(new float[]{1000, 1000, 1000}), new Point3D[]{}, new HashMap<>());
     }
 }

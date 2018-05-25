@@ -22,36 +22,60 @@
  *
  */
 
-package be.yildizgames.engine.feature.city.building;
+package be.yildizgames.engine.feature.city;
 
-import be.yildizgames.engine.feature.city.Level;
-import be.yildizgames.engine.feature.city.building.staff.Staff;
-import be.yildizgames.engine.feature.resource.bonus.BonusResources;
+import be.yildizgames.common.util.Checker;
 
 /**
- * The bonus factory build bonus instance matching a given building with a given level and a given staff.
+ * Maximum number of instances for a given entity.
+ * Immutable class.
  *
  * @author Grégory Van den Borre
  */
-public interface BonusFactory {
+public final class Instance {
 
     /**
-     * Provide the bonus for the building at the given level, if any.
-     *
-     * @param level Building level.
-     * @return The matching bonus.
+     * Unique instance, maximum is 1.
      */
-    BonusResources getLevelBonus(Level level);
+    public static final Instance UNIQUE = new Instance(1);
 
     /**
-     * Provide the bonus for the allocated staff.
-     *
-     * @param staff Allocated staff.
-     * @return The matching bonus.
+     * No limit.
      */
-    //@requires staff >= 0.
-    BonusResources getStaffBonus(Staff staff);
+    public static final Instance NO_LIMIT = new Instance(Integer.MAX_VALUE);
 
-    boolean hasRatioBonus();
+    /**
+     * Number of allowed instances.
+     */
+    public final int number;
 
+    /**
+     * Full constructor.
+     *
+     * @param instanceNumber Number of allowed instances.
+     */
+    public Instance(final int instanceNumber) {
+        super();
+        Checker.exceptionNotGreaterThanZero(instanceNumber);
+        this.number = instanceNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Instance instance = (Instance) o;
+
+        return number == instance.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return number;
+    }
 }
