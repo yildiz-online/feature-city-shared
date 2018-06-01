@@ -73,7 +73,7 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
     @Override
     public C createCity(final CityId id, PlayerId owner, Point3D position) {
         C city = this.createCityImpl(id, owner, position);
-        this.cityList.computeIfAbsent(owner, (s) -> new HashSet<>()).add(city);
+        this.cityList.computeIfAbsent(owner, s -> new HashSet<>()).add(city);
         this.cities.put(id, city);
         return city;
     }
