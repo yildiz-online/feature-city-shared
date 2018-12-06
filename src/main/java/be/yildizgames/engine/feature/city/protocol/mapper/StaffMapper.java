@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.IntegerMapper;
-import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 
@@ -45,13 +45,13 @@ public class StaffMapper implements ObjectMapper<Staff> {
     }
 
     @Override
-    public Staff from(String s) throws MappingException {
+    public Staff from(String s) {
         return Staff.valueOf(IntegerMapper.getInstance().from(s));
     }
 
     @Override
     public String to(Staff s) {
-        assert s != null;
+        ImplementationException.throwForNull(s);
         return IntegerMapper.getInstance().to(s.value);
     }
 }

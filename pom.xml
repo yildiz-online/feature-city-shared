@@ -55,6 +55,16 @@
     </dependency>
     <dependency>
       <groupId>be.yildiz-games</groupId>
+      <artifactId>common-mapping-model</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>be.yildiz-games</groupId>
+      <artifactId>common-exception</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>be.yildiz-games</groupId>
       <artifactId>common-geometry</artifactId>
       <version>1.0.3</version>
     </dependency>

@@ -24,35 +24,20 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.mapping.ObjectMapper;
-import be.yildizgames.engine.feature.city.building.BuildingPosition;
+import be.yildizgames.common.exception.business.BusinessException;
 
-/**
- * @author Grégory Van den Borre
- */
-public class BuildingPositionMapper implements ObjectMapper<BuildingPosition> {
+public class CitmyMappingException extends BusinessException {
 
-    private static final BuildingPositionMapper INSTANCE = new BuildingPositionMapper();
 
-    private BuildingPositionMapper() {
-        super();
+    CitmyMappingException(String message) {
+        super(message);
     }
 
-    public static BuildingPositionMapper getInstance() {
-        return INSTANCE;
+    CitmyMappingException(Exception cause) {
+        super(cause);
     }
 
-    @Override
-    public BuildingPosition from(String s) {
-        try {
-            return BuildingPosition.valueOf(Integer.parseInt(s));
-        } catch (final NumberFormatException nfe) {
-            throw new CitmyMappingException(nfe);
-        }
-    }
-
-    @Override
-    public String to(BuildingPosition p) {
-        return String.valueOf(p.value);
+    CitmyMappingException(String message, Exception cause) {
+        super(message, cause);
     }
 }

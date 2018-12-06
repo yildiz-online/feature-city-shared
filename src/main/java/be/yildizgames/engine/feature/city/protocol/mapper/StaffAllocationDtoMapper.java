@@ -25,7 +25,7 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.common.mapping.model.EntityIdMapper;
@@ -47,8 +47,8 @@ public class StaffAllocationDtoMapper implements ObjectMapper<StaffAllocationDto
     }
 
     @Override
-    public StaffAllocationDto from(String s) throws MappingException {
-        assert s != null;
+    public StaffAllocationDto from(String s) throws CitmyMappingException {
+        ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.OBJECTS_SEPARATOR);
         try {
             return new StaffAllocationDto(EntityIdMapper.getInstance().from(v[0]),
@@ -56,13 +56,13 @@ public class StaffAllocationDtoMapper implements ObjectMapper<StaffAllocationDto
                     StaffMapper.getInstance().from(v[2])
                     );
         } catch (IndexOutOfBoundsException e) {
-            throw new MappingException(e);
+            throw new CitmyMappingException(e);
         }
     }
 
     @Override
     public String to(StaffAllocationDto dto) {
-        assert dto != null;
+        ImplementationException.throwForNull(dto);
         return EntityIdMapper.getInstance().to(dto.cityId)
                 + Separator.OBJECTS_SEPARATOR
                 + BuildingPositionMapper.getInstance().to(dto.position)

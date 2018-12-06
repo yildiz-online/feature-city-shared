@@ -30,6 +30,7 @@ module be.yildizgames.feature.city.shared {
     requires be.yildizgames.common.mapping;
     requires be.yildizgames.common.mapping.model;
     requires be.yildizgames.common.frame;
+    requires be.yildizgames.common.exception;
 
     exports be.yildizgames.engine.feature.city;
     exports be.yildizgames.engine.feature.city.building;

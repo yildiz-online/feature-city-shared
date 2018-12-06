@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.LongMapper;
-import be.yildizgames.common.mapping.MappingException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
 import be.yildizgames.engine.feature.city.protocol.BuildingConstructionDto;
@@ -38,8 +38,8 @@ import java.time.Duration;
 public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConstructionDto> {
 
     @Override
-    public BuildingConstructionDto from(String s) throws MappingException {
-        assert s != null;
+    public BuildingConstructionDto from(String s) {
+        ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.VAR_SEPARATOR);
         try {
             return new BuildingConstructionDto(
@@ -51,13 +51,13 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
                     Duration.ofMillis(LongMapper.getInstance().from(v[5]))
             );
         } catch (IndexOutOfBoundsException e) {
-            throw new MappingException(e);
+            throw new CitmyMappingException(e);
         }
     }
 
     @Override
     public String to(BuildingConstructionDto dto) {
-        assert dto != null;
+        ImplementationException.throwForNull(dto);
         return CityIdMapper.getInstance().to(dto.cityId)
                 + Separator.VAR_SEPARATOR
                 + BuildingTypeMapper.getInstance().to(dto.type)

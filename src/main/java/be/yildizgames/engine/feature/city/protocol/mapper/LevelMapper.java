@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.mapping.MappingException;
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.engine.feature.city.Level;
 
@@ -44,18 +44,18 @@ class LevelMapper implements ObjectMapper<Level> {
     }
 
     @Override
-    public Level from(String s) throws MappingException {
-        assert s != null;
+    public Level from(String s) {
+        ImplementationException.throwForNull(s);
         try {
             return Level.valueOf(Integer.parseInt(s));
         } catch (final NumberFormatException nfe) {
-            throw new MappingException(nfe);
+            throw new CitmyMappingException(nfe);
         }
     }
 
     @Override
     public String to(Level level) {
-        assert level != null;
+        ImplementationException.throwForNull(level);
         return String.valueOf(level.value);
     }
 }
