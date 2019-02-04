@@ -33,15 +33,15 @@ import org.junit.jupiter.api.Test;
  * @author Grégory Van den Borre
  */
 @Disabled
-class BaseCityManagerTest {
+public class BaseCityManagerTest {
 
     @Test
-    void testSetOwnerCityPlayer() {
+    public void testSetOwnerCityPlayer() {
 
     }
 
     @Test
-    void createCity() {
+    public void createCity() {
         /*CityManager cm = givenACityManager();
         assertEquals(0, cm.getCities().size());
         assertEquals(0, cm.getCities().size());

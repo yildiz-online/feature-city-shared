@@ -125,7 +125,7 @@ public class BaseBuildingTest {
 
 
     @Test
-    void testConstructor() {
+    public void testConstructor() {
         Building b = new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, OK_STAFF);
         assertEquals(OK_CITY, b.getCity());
         assertEquals(OK_POSITION, b.getBuildingPosition());
@@ -135,42 +135,42 @@ public class BaseBuildingTest {
     }
 
     @Test
-    void testConstructorNullCity() {
+    public void testConstructorNullCity() {
         Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(null, OK_DATA, OK_POSITION, OK_LEVEL, OK_STAFF));
     }
 
     @Test
-    void testConstructorNullData() {
+    public void testConstructorNullData() {
         Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, null, OK_POSITION, OK_LEVEL, OK_STAFF));
     }
 
     @Test
-    void testConstructorNullPosition() {
+    public void testConstructorNullPosition() {
         Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, null, OK_LEVEL, OK_STAFF));
     }
 
     @Test
-    void testConstructorNullLevel() {
+    public void testConstructorNullLevel() {
         Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, null, OK_STAFF));
     }
 
     @Test
-    void testConstructorNegativeStaff() {
+    public void testConstructorNegativeStaff() {
         Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, Staff.valueOf(-1)));
     }
 
     @Test
-    void testConstructorLevelTooHigh() {
+    public void testConstructorLevelTooHigh() {
         Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, MAX_LEVEL.add(1), OK_STAFF));
     }
 
     @Test
-    void testConstructorAssignedStaffTooHigh() {
+    public void testConstructorAssignedStaffTooHigh() {
         Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, Staff.valueOf(35)));
     }
 
     @Test
-    void testSetStaff() {
+    public void testSetStaff() {
         Building b = givenABuilding();
         b.setStaff(Staff.valueOf(10));
         assertEquals(OK_STAFF, b.getOldStaff());
@@ -178,57 +178,57 @@ public class BaseBuildingTest {
     }
 
     @Test
-    void testTooHighStaff() {
+    public void testTooHighStaff() {
         Building b = givenABuilding();
         Assertions.assertThrows(AssertionError.class, () -> b.setStaff(Staff.valueOf(35)));
     }
 
     @Test
-    void testNegativeStaff() {
+    public void testNegativeStaff() {
         Building b = new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, OK_STAFF);
         Assertions.assertThrows(AssertionError.class, () -> b.setStaff(Staff.valueOf(-1)));
     }
 
     @Test
-    void testSetLevel() {
+    public void testSetLevel() {
         Building b = givenABuilding();
         b.setLevel(Level.valueOf(14));
         assertEquals(Level.valueOf(14), b.getLevel());
     }
 
     @Test
-    void testSetLevelNull() {
+    public void testSetLevelNull() {
         Building b = givenABuilding();
         Assertions.assertThrows(AssertionError.class, () -> b.setLevel(null));
     }
 
     @Test
-    void testSetLevelTooHigh() {
+    public void testSetLevelTooHigh() {
         Building b = givenABuilding();
         Assertions.assertThrows(AssertionError.class, () -> b.setLevel(MAX_LEVEL.add(1)));
     }
 
     @Test
-    void testGetNextLevelPrice() {
+    public void testGetNextLevelPrice() {
         Building b = givenABuilding();
         assertEquals(NEXT_LEVEL_PRICE, b.getNextLevelPrice());
     }
 
     @Test
-    void testGetNextLevelPriceLevelMax() {
+    public void testGetNextLevelPriceLevelMax() {
         Building b = givenABuilding();
         b.setLevel(MAX_LEVEL);
         Assertions.assertThrows(AssertionError.class, b::getNextLevelPrice);
     }
 
     @Test
-    void testGetNextLevelTime() {
+    public void testGetNextLevelTime() {
         Building b = givenABuilding();
         assertEquals(NEXT_LEVEL_TIME, b.getNextLevelTimeToBuild());
     }
 
     @Test
-    void testGetNextLevelTimeLevelMax() {
+    public void testGetNextLevelTimeLevelMax() {
         Building b = givenABuilding();
         b.setLevel(MAX_LEVEL);
         Assertions.assertThrows(AssertionError.class, b::getNextLevelTimeToBuild);

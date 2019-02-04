@@ -35,7 +35,7 @@ import org.junit.jupiter.api.BeforeAll;
 /**
  * @author Grégory Van den Borre
  */
-class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingConstructionDto> {
+public class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingConstructionDto> {
 
     @BeforeAll
     static void init() {
