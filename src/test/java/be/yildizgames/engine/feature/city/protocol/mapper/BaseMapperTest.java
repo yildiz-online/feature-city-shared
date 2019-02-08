@@ -40,7 +40,7 @@ public abstract class BaseMapperTest<T>{
     private final ObjectMapper<T> mapper;
     private final T baseObject;
 
-    protected BaseMapperTest(ObjectMapper<T> mapper, T baseObject) {
+    public BaseMapperTest(ObjectMapper<T> mapper, T baseObject) {
         this.mapper = mapper;
         this.baseObject = baseObject;
     }

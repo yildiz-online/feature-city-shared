@@ -42,7 +42,7 @@ public class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingCo
          BuildingType.register(143, "test");
     }
 
-    BuildingConstructionDtoMapperTest() {
+    public BuildingConstructionDtoMapperTest() {
         super(new BuildingConstructionDtoMapper(),
                 new BuildingConstructionDto(
                         CityId.valueOf(3),
