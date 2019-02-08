@@ -38,7 +38,7 @@ import org.junit.jupiter.api.BeforeAll;
 public class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingConstructionDto> {
 
     @BeforeAll
-    static void init() {
+    public static void init() {
          BuildingType.register(143, "test");
     }
 
