@@ -93,7 +93,7 @@ public class BuildingConstructionManager<B extends Building, D extends BuildingD
         C city = this.cityManager.getCityById(b.getCity());
         if (timeLeft > 0) {
             WaitingBuilding<B> data = new WaitingBuilding<>(b, timeLeft);
-            this.constructionToBuildByCity.computeIfAbsent(city, (s) -> new HashSet<>()).add(data);
+            this.constructionToBuildByCity.computeIfAbsent(city, s -> new HashSet<>()).add(data);
             this.constructionToBuildList.add(data);
         } else {
             this.associatedFactory.createBuilding(b);
@@ -164,7 +164,7 @@ public class BuildingConstructionManager<B extends Building, D extends BuildingD
      * @return The list of buildings to build for a city.
      */
     public Set<WaitingBuilding<B>> getBuildingList(C c) {
-        return Collections.unmodifiableSet(this.constructionToBuildByCity.computeIfAbsent(c, (s) -> new HashSet<>()));
+        return Collections.unmodifiableSet(this.constructionToBuildByCity.computeIfAbsent(c, s -> new HashSet<>()));
     }
 
 }
