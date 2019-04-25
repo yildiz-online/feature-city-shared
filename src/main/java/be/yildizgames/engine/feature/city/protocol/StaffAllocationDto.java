@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.city.protocol;
 
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.BuildingPosition;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 
@@ -36,7 +36,7 @@ public class StaffAllocationDto {
     /**
      * Id of the city containing the building where staff will be allocated.
      */
-    public final EntityId cityId;
+    public final CityId cityId;
 
     /**
      * Building position in the city.
@@ -48,7 +48,7 @@ public class StaffAllocationDto {
      */
     public final Staff staff;
 
-    public StaffAllocationDto(EntityId cityId, BuildingPosition position, Staff staff) {
+    public StaffAllocationDto(CityId cityId, BuildingPosition position, Staff staff) {
         this.cityId = cityId;
         this.position = position;
         this.staff = staff;
