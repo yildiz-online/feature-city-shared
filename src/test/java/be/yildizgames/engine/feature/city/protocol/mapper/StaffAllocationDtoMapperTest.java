@@ -24,7 +24,7 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.building.BuildingPosition;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 import be.yildizgames.engine.feature.city.protocol.StaffAllocationDto;
@@ -35,6 +35,6 @@ import be.yildizgames.engine.feature.city.protocol.StaffAllocationDto;
 public class StaffAllocationDtoMapperTest extends BaseMapperTest<StaffAllocationDto> {
 
     public StaffAllocationDtoMapperTest() {
-        super(StaffAllocationDtoMapper.getInstance(), new StaffAllocationDto(EntityId.valueOf(1), BuildingPosition.valueOf(3), Staff.valueOf(8)));
+        super(StaffAllocationDtoMapper.getInstance(), new StaffAllocationDto(CityId.valueOf(1), BuildingPosition.valueOf(3), Staff.valueOf(8)));
     }
 }
