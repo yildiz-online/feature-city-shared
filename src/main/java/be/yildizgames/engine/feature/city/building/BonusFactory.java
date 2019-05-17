@@ -53,5 +53,4 @@ public interface BonusFactory {
     BonusResources getStaffBonus(Staff staff);
 
     boolean hasRatioBonus();
-
 }
