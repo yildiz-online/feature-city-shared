@@ -54,4 +54,5 @@ public class BuildingTypeMapper implements ObjectMapper<BuildingType> {
         ImplementationException.throwForNull(type);
         return String.valueOf(type.type);
     }
+
 }

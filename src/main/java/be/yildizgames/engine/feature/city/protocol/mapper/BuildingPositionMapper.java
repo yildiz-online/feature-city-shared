@@ -47,7 +47,7 @@ public class BuildingPositionMapper implements ObjectMapper<BuildingPosition> {
         try {
             return BuildingPosition.valueOf(Integer.parseInt(s));
         } catch (final NumberFormatException nfe) {
-            throw new CitmyMappingException(nfe);
+            throw new CityMappingException(nfe);
         }
     }
 
@@ -55,4 +55,5 @@ public class BuildingPositionMapper implements ObjectMapper<BuildingPosition> {
     public String to(BuildingPosition p) {
         return String.valueOf(p.value);
     }
+
 }

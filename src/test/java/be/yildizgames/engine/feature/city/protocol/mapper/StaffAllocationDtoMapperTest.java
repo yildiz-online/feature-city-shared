@@ -37,4 +37,5 @@ public class StaffAllocationDtoMapperTest extends BaseMapperTest<StaffAllocation
     public StaffAllocationDtoMapperTest() {
         super(StaffAllocationDtoMapper.getInstance(), new StaffAllocationDto(CityId.valueOf(1), BuildingPosition.valueOf(3), Staff.valueOf(8)));
     }
+
 }

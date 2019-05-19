@@ -31,6 +31,7 @@ import java.util.Map;
  * Simple wrapper class for an entity type. An Entity type is composed of a type
  * and a name, both must be unique in the application instance.
  * Immutable class.
+ *
  * @author Grégory Van den Borre
  *
  * specfield type : int : positive not null value, 2 different types cannot

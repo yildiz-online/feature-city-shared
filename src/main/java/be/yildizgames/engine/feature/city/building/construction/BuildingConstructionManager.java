@@ -166,5 +166,4 @@ public class BuildingConstructionManager<B extends Building, D extends BuildingD
     public Set<WaitingBuilding<B>> getBuildingList(C c) {
         return Collections.unmodifiableSet(this.constructionToBuildByCity.computeIfAbsent(c, s -> new HashSet<>()));
     }
-
 }

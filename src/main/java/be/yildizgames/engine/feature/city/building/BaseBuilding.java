@@ -242,4 +242,5 @@ public final class BaseBuilding implements Building {
         }
         return this.data.getPrice(this.level.add(1));
     }
+
 }

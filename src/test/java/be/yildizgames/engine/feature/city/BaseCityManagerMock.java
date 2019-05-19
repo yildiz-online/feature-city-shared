@@ -40,7 +40,7 @@ public class BaseCityManagerMock extends BaseCityManager<Building, BuildingData,
     }
 
     @Override
-    protected BaseCity<Building, BuildingData> createCityImpl(CityId id, PlayerId owner, Point3D position) {
+    protected final BaseCity<Building, BuildingData> createCityImpl(CityId id, PlayerId owner, Point3D position) {
         return null;// new BaseCity<>(id, new ResourceValue(new float[]{1000, 1000, 1000}), new Point3D[]{}, new HashMap<>());
     }
 }

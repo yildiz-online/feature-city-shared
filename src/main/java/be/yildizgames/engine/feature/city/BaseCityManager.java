@@ -71,7 +71,7 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
      * @param id Associated entity.
      */
     @Override
-    public C createCity(final CityId id, PlayerId owner, Point3D position) {
+    public final C createCity(final CityId id, PlayerId owner, Point3D position) {
         C city = this.createCityImpl(id, owner, position);
         this.cityList.computeIfAbsent(owner, s -> new HashSet<>()).add(city);
         this.cities.put(id, city);
@@ -81,7 +81,7 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
     protected abstract C createCityImpl(final CityId id, PlayerId owner, Point3D position);
 
     @Override
-    public C getCityById(final CityId id) {
+    public final C getCityById(final CityId id) {
         return this.cities.get(id);
     }
 
@@ -91,17 +91,17 @@ public abstract class BaseCityManager<T extends Building, D extends BuildingData
     }
 
     @Override
-    public Set<C> getCities(final PlayerId player) {
+    public final Set<C> getCities(final PlayerId player) {
         return this.cityList.getOrDefault(player, Collections.emptySet());
     }
 
     @Override
-    public void createEmptyCityBuildings(C city) {
+    public final void createEmptyCityBuildings(C city) {
         this.typeFactory.createEmptyCity(city);
     }
 
     @Override
-    public D getData(BuildingType entityType) {
+    public final D getData(BuildingType entityType) {
         return this.typeFactory.getRegisteredData().get(entityType);
     }
 }

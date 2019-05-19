@@ -51,7 +51,7 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
                     Duration.ofMillis(LongMapper.getInstance().from(v[5]))
             );
         } catch (IndexOutOfBoundsException e) {
-            throw new CitmyMappingException(e);
+            throw new CityMappingException(e);
         }
     }
 
@@ -70,4 +70,5 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
                 + Separator.VAR_SEPARATOR
                 + LongMapper.getInstance().to(dto.time.toMillis());
     }
+
 }

@@ -55,4 +55,5 @@ public interface BuildingConstructionListener<B extends Building, D extends Buil
      */
     default void buildingInConstruction(C city, B building, long timeLeft) {
     }
+
 }

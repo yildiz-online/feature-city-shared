@@ -44,18 +44,19 @@ public class CityIdMapper implements ObjectMapper<CityId> {
     }
 
     @Override
-    public CityId from(String s) {
+    public final CityId from(String s) {
         ImplementationException.throwForNull(s);
         try {
             return CityId.valueOf(Integer.parseInt(s));
         } catch (final NumberFormatException nfe) {
-            throw new CitmyMappingException("Error retrieving id", nfe);
+            throw new CityMappingException("Error retrieving id", nfe);
         }
     }
 
     @Override
-    public String to(CityId cityId) {
+    public final String to(CityId cityId) {
         ImplementationException.throwForNull(cityId);
         return String.valueOf(cityId.value);
     }
+
 }

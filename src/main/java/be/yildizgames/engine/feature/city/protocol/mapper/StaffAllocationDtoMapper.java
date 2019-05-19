@@ -46,7 +46,7 @@ public class StaffAllocationDtoMapper implements ObjectMapper<StaffAllocationDto
     }
 
     @Override
-    public StaffAllocationDto from(String s) throws CitmyMappingException {
+    public StaffAllocationDto from(String s) throws CityMappingException {
         ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.OBJECTS_SEPARATOR);
         try {
@@ -55,7 +55,7 @@ public class StaffAllocationDtoMapper implements ObjectMapper<StaffAllocationDto
                     StaffMapper.getInstance().from(v[2])
                     );
         } catch (IndexOutOfBoundsException e) {
-            throw new CitmyMappingException(e);
+            throw new CityMappingException(e);
         }
     }
 
@@ -68,4 +68,5 @@ public class StaffAllocationDtoMapper implements ObjectMapper<StaffAllocationDto
                 + Separator.OBJECTS_SEPARATOR
                 + StaffMapper.getInstance().to(dto.staff);
     }
+
 }

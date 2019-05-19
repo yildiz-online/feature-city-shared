@@ -169,4 +169,5 @@ public interface Building {
     Duration getTimeToBuild(final Level level);
 
     boolean exists();
+
 }

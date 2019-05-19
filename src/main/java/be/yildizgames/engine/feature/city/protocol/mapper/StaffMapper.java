@@ -54,4 +54,5 @@ public class StaffMapper implements ObjectMapper<Staff> {
         ImplementationException.throwForNull(s);
         return IntegerMapper.getInstance().to(s.value);
     }
+
 }

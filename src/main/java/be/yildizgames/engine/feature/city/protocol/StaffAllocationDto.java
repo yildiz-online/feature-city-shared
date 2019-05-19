@@ -55,7 +55,7 @@ public class StaffAllocationDto {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -69,7 +69,7 @@ public class StaffAllocationDto {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = cityId.hashCode();
         result = 31 * result + position.hashCode();
         result = 31 * result + staff.hashCode();

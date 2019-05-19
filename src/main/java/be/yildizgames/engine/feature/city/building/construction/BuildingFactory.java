@@ -40,4 +40,5 @@ public interface BuildingFactory<B extends Building> {
      * @param building Building data.
      */
     void createBuilding(B building);
+
 }

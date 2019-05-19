@@ -26,18 +26,21 @@ package be.yildizgames.engine.feature.city.protocol.mapper;
 
 import be.yildizgames.common.exception.business.BusinessException;
 
-public class CitmyMappingException extends BusinessException {
+/**
+ * @author Grégory Van den Borre
+ */
+public class CityMappingException extends BusinessException {
 
 
-    CitmyMappingException(String message) {
+    CityMappingException(String message) {
         super(message);
     }
 
-    CitmyMappingException(Exception cause) {
+    CityMappingException(Exception cause) {
         super(cause);
     }
 
-    CitmyMappingException(String message, Exception cause) {
+    CityMappingException(String message, Exception cause) {
         super(message, cause);
     }
 }

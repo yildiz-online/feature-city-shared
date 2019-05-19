@@ -48,10 +48,15 @@ public class BaseBuildingTest {
     public static final Level OK_LEVEL = Level.valueOf(5);
 
     public static final BuildingPosition OK_POSITION = BuildingPosition.valueOf(2);
+
     private static final Level MAX_LEVEL = Level.valueOf(32);
+
     private static final BuildingType TYPE = BuildingType.register(10, "test");
+
     private static final ResourceValue NEXT_LEVEL_PRICE = new ResourceValue(new float[]{10, 10, 10});
+
     private static final Duration NEXT_LEVEL_TIME = Duration.ofSeconds(10);
+
     public static final BuildingData OK_DATA = getData();
 
     private static BuildingData getData() {

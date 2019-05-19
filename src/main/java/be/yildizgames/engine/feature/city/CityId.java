@@ -38,4 +38,5 @@ public class CityId extends ValueObject {
     public static CityId valueOf(int value) {
         return new CityId(value);
     }
+
 }

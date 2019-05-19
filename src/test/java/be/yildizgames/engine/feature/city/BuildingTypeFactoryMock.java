@@ -39,12 +39,12 @@ import java.util.Map;
 public class BuildingTypeFactoryMock implements BuildingTypeFactory<Building, BuildingData> {
 
     @Override
-    public Map<BuildingType, BuildingData> getRegisteredData() {
+    public final Map<BuildingType, BuildingData> getRegisteredData() {
         return new HashMap<>();
     }
 
     @Override
-    public void createEmptyCity(City<Building, BuildingData> city) {
+    public final void createEmptyCity(City<Building, BuildingData> city) {
 
     }
 }

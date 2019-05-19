@@ -56,4 +56,5 @@ public class BaseCityManagerTest {
     private CityManager<Building,BuildingData,BaseCity<Building,BuildingData>> givenACityManager() {
         return new BaseCityManagerMock();
     }
+
 }

@@ -49,7 +49,7 @@ class LevelMapper implements ObjectMapper<Level> {
         try {
             return Level.valueOf(Integer.parseInt(s));
         } catch (final NumberFormatException nfe) {
-            throw new CitmyMappingException(nfe);
+            throw new CityMappingException(nfe);
         }
     }
 
@@ -58,4 +58,5 @@ class LevelMapper implements ObjectMapper<Level> {
         ImplementationException.throwForNull(level);
         return String.valueOf(level.value);
     }
+
 }

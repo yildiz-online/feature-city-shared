@@ -52,4 +52,5 @@ public class BuildingConstructionDtoMapperTest extends BaseMapperTest<BuildingCo
                         Staff.valueOf(2)
                 ));
     }
+
 }

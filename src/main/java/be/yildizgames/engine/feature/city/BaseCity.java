@@ -106,27 +106,27 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
     }
 
     @Override
-    public D getByType(final BuildingType type) {
+    public final D getByType(final BuildingType type) {
         return this.datas.get(type);
     }
 
     @Override
-    public String getName() {
+    public final String getName() {
         return "City";
     }
 
     @Override
-    public boolean hasNegativeProductionRatio() {
+    public final boolean hasNegativeProductionRatio() {
         return this.producer.hasNegativeRatio();
     }
 
     @Override
-    public Point3D getBuildingPosition(final BuildingPosition position) {
+    public final Point3D getBuildingPosition(final BuildingPosition position) {
         return positionOffset[position.value];
     }
 
     @Override
-    public int getAllocatedStaff() {
+    public final int getAllocatedStaff() {
         int total = 0;
         for (T b : this.buildings) {
             total += b.getOldStaff().value;
@@ -135,12 +135,12 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
     }
 
     @Override
-    public T getBuilding(final BuildingPosition position) {
+    public final T getBuilding(final BuildingPosition position) {
         return this.buildings.get(position.value);
     }
 
     @Override
-    public void createConstruction(final T building) {
+    public final void createConstruction(final T building) {
         if (this.buildings.size() > building.getBuildingPosition().value) {
             this.buildings.remove(building.getBuildingPosition().value);
         }
@@ -148,7 +148,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
     }
 
     @Override
-    public Set<BuildingType> getAllowedType() {
+    public final Set<BuildingType> getAllowedType() {
         Set<BuildingType> l = this.datas.keySet();
         for (Building b : this.buildings) {
             l.remove(b.getType());
@@ -157,42 +157,42 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
     }
 
     @Override
-    public List<D> getAllType() {
+    public final List<D> getAllType() {
         return new ArrayList<>(this.datas.values());
     }
 
     @Override
-    public int getMaximumBuildings() {
+    public final int getMaximumBuildings() {
         return this.positionOffset.length;
     }
 
     @Override
-    public CityId getId() {
+    public final CityId getId() {
         return this.id;
     }
 
     @Override
-    public PlayerId getOwner() {
+    public final PlayerId getOwner() {
         return this.owner;
     }
 
     @Override
-    public Point3D getPosition() {
+    public final Point3D getPosition() {
         return this.position;
     }
 
     @Override
-    public void initializeProducer() {
+    public final void initializeProducer() {
         this.getProducer().setInitialised();
     }
 
     @Override
-    public List<T> getBuildings() {
+    public final List<T> getBuildings() {
         return buildings;
     }
 
     @Override
-    public ResourcesProducer getProducer() {
+    public final ResourcesProducer getProducer() {
         return producer;
     }
 }

@@ -48,4 +48,5 @@ public final class BuildingPosition extends ValueObject {
     public static BuildingPosition valueOf(int value) {
         return new BuildingPosition(value);
     }
+
 }

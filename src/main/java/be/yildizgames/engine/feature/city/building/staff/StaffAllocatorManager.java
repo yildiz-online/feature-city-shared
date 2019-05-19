@@ -156,4 +156,5 @@ public class StaffAllocatorManager<B extends Building, D extends BuildingData, C
             this.timeToAllocate = timeToAllocate;
         }
     }
+
 }

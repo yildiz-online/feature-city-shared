@@ -65,11 +65,11 @@ public final class Level extends ValueObject {
      * @param toAdd Value to add to this level to get the new one.
      * @return A new Level resulting of the sum.
      */
-    public Level add(final int toAdd) {
+    public final Level add(final int toAdd) {
         return new Level(this.value + toAdd);
     }
 
-    public boolean isNotZero() {
+    public final boolean isNotZero() {
         return this.value > 0;
     }
 }

@@ -199,4 +199,5 @@ public abstract class GameBuildingData implements BuildingData {
     public final String toString() {
         return this.getType().toString();
     }
+
 }

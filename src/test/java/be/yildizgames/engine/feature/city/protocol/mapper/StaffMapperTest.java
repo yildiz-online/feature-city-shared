@@ -35,4 +35,5 @@ public class StaffMapperTest extends BaseMapperTest<Staff> {
     public StaffMapperTest() {
         super(StaffMapper.getInstance(), Staff.valueOf(5));
     }
+
 }

@@ -49,4 +49,5 @@ public interface CityManager<T extends Building, D extends BuildingData, C exten
     void createEmptyCityBuildings(C city);
 
     D getData(BuildingType entityType);
+
 }

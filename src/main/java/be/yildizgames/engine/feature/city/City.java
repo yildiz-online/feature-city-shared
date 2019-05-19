@@ -135,4 +135,5 @@ public interface City<T extends Building, D extends BuildingData> extends Resour
     List<T> getBuildings();
 
     D getByType(BuildingType e);
+
 }

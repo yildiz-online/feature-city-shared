@@ -168,4 +168,5 @@ public interface BuildingData {
             return maxPopulation;
         }
     }
+
 }

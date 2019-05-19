@@ -40,4 +40,5 @@ public class Staff extends ValueObject {
     public static Staff valueOf(int value) {
         return new Staff(value);
     }
+
 }

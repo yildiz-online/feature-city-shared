@@ -52,5 +52,4 @@ public interface BuildingTypeFactory<B extends Building, D extends BuildingData>
     //Requires city != null.
     //@Ensures the city will contains a building for all its building positions.
     void createEmptyCity(City<B, D> city);
-
 }
