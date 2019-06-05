@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildizgames.common.util.Checker;
 import be.yildizgames.engine.feature.city.Instance;
 import be.yildizgames.engine.feature.city.Level;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
@@ -141,7 +140,7 @@ public abstract class GameBuildingData implements BuildingData {
      * @return The price and time to build data of the building at the given level.
      */
     private LevelData getForLevel(final Level level) {
-        assert Checker.inArrayRange(level.value, levels);
+        assert level.value >= 0 && level.value < levels.length;
         if(this.empty) {
             return this.levels[0];
         }

@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildizgames.common.util.Checker;
 import be.yildizgames.engine.feature.city.CityId;
 import be.yildizgames.engine.feature.city.Level;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
@@ -106,7 +105,9 @@ public final class BaseBuilding implements Building {
 
     @Override
     public void setStaff(final Staff staff) {
-        Checker.exceptionNotPositive(staff.value);
+        if(staff.value < 0) {
+            throw new IllegalArgumentException("Staff must be positive");
+        }
         if (staff.value > this.getMaxPopulation(this.level).value) {
             throw new AssertionError("Staff too high for this level.");
         }

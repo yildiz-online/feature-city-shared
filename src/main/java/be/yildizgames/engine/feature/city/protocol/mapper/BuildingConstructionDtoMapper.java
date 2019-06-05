@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.LongMapper;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.common.mapping.Separator;
@@ -39,7 +38,6 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
 
     @Override
     public BuildingConstructionDto from(String s) {
-        ImplementationException.throwForNull(s);
         String[] v = s.split(Separator.VAR_SEPARATOR);
         try {
             return new BuildingConstructionDto(
@@ -57,7 +55,6 @@ public class BuildingConstructionDtoMapper implements ObjectMapper<BuildingConst
 
     @Override
     public String to(BuildingConstructionDto dto) {
-        ImplementationException.throwForNull(dto);
         return CityIdMapper.getInstance().to(dto.cityId)
                 + Separator.VAR_SEPARATOR
                 + BuildingTypeMapper.getInstance().to(dto.type)

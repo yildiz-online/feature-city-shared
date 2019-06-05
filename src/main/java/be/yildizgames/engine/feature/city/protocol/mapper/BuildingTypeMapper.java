@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.IntegerMapper;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.engine.feature.city.building.BuildingType;
@@ -51,7 +50,6 @@ public class BuildingTypeMapper implements ObjectMapper<BuildingType> {
 
     @Override
     public String to(BuildingType type) {
-        ImplementationException.throwForNull(type);
         return String.valueOf(type.type);
     }
 

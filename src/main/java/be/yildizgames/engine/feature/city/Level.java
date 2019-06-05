@@ -24,9 +24,6 @@
 
 package be.yildizgames.engine.feature.city;
 
-import be.yildizgames.common.util.Checker;
-import be.yildizgames.common.util.ValueObject;
-
 /**
  * Simple wrapper class to represent level.
  * Immutable class.

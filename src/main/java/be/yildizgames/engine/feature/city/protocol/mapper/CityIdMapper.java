@@ -24,7 +24,6 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.mapping.ObjectMapper;
 import be.yildizgames.engine.feature.city.CityId;
 
@@ -45,7 +44,6 @@ public class CityIdMapper implements ObjectMapper<CityId> {
 
     @Override
     public final CityId from(String s) {
-        ImplementationException.throwForNull(s);
         try {
             return CityId.valueOf(Integer.parseInt(s));
         } catch (final NumberFormatException nfe) {
@@ -55,7 +53,6 @@ public class CityIdMapper implements ObjectMapper<CityId> {
 
     @Override
     public final String to(CityId cityId) {
-        ImplementationException.throwForNull(cityId);
         return String.valueOf(cityId.value);
     }
 

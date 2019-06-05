@@ -24,12 +24,10 @@
 
 package be.yildizgames.engine.feature.city.protocol.mapper;
 
-import be.yildizgames.common.exception.business.BusinessException;
-
 /**
  * @author Grégory Van den Borre
  */
-public class CityMappingException extends BusinessException {
+public class CityMappingException extends IllegalArgumentException {
 
 
     CityMappingException(String message) {
