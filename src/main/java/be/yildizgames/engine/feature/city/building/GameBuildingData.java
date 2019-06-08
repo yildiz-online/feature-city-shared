@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.city.building;
 
+import be.yildizgames.common.model.Level;
 import be.yildizgames.engine.feature.city.Instance;
-import be.yildizgames.engine.feature.city.Level;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 import be.yildizgames.engine.feature.resource.bonus.BonusResources;

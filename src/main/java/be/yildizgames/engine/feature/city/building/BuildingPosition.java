@@ -24,8 +24,7 @@
 
 package be.yildizgames.engine.feature.city.building;
 
-import be.yildizgames.common.util.Checker;
-import be.yildizgames.common.util.ValueObject;
+import be.yildizgames.common.model.ValueObject;
 
 /**
  * Simple wrapper class to represent the building position in a city.
@@ -42,7 +41,9 @@ public final class BuildingPosition extends ValueObject {
      */
     private BuildingPosition(final int value) {
         super(value);
-        Checker.exceptionNotPositive(value);
+        if(value < 0) {
+            throw new IllegalArgumentException("position must be at least 0.");
+        }
     }
 
     public static BuildingPosition valueOf(int value) {

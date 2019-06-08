@@ -24,17 +24,18 @@
 
 package be.yildizgames.engine.feature.city.building.staff;
 
-import be.yildizgames.common.util.Checker;
-import be.yildizgames.common.util.ValueObject;
+import be.yildizgames.common.model.ValueObject;
 
 /**
  * @author Grégory Van den Borre
  */
 public class Staff extends ValueObject {
 
-    private Staff(int level) {
-        super(level);
-        Checker.exceptionNotPositive(level);
+    private Staff(int staff) {
+        super(staff);
+        if(staff < 0) {
+            throw new IllegalArgumentException("Staff must be at least 0.");
+        }
     }
 
     public static Staff valueOf(int value) {

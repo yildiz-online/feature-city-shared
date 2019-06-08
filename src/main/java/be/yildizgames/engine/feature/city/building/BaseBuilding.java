@@ -24,13 +24,14 @@
 
 package be.yildizgames.engine.feature.city.building;
 
+import be.yildizgames.common.model.Level;
 import be.yildizgames.engine.feature.city.CityId;
-import be.yildizgames.engine.feature.city.Level;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 import be.yildizgames.engine.feature.resource.bonus.BonusResources;
 
 import java.time.Duration;
+import java.util.Objects;
 
 /**
  * Class containing data for a building(city, level, position, type).
@@ -82,10 +83,11 @@ public final class BaseBuilding implements Building {
      */
     public BaseBuilding(final CityId city, final BuildingData data, final BuildingPosition buildingPosition, final Level level, final Staff staff) {
         super();
-        assert city != null;
-        assert data != null;
-        assert buildingPosition != null;
-        assert level != null;
+        Objects.requireNonNull(city);
+        Objects.requireNonNull(data);
+        Objects.requireNonNull(buildingPosition);
+        Objects.requireNonNull(level);
+        Objects.requireNonNull(staff);
         this.city = city;
         this.data = data;
         this.buildingPosition = buildingPosition;
@@ -96,9 +98,8 @@ public final class BaseBuilding implements Building {
 
     @Override
     public void setLevel(final Level buildingLevel) {
-        assert buildingLevel != null;
         if (buildingLevel.value < 0 || buildingLevel.value > this.data.getMaxLevel().value) {
-            throw new AssertionError("Wrong level for " + this + " trying to set level " + buildingLevel);
+            throw new IllegalArgumentException("Wrong level for " + this + " trying to set level " + buildingLevel);
         }
         this.level = buildingLevel;
     }
@@ -109,7 +110,7 @@ public final class BaseBuilding implements Building {
             throw new IllegalArgumentException("Staff must be positive");
         }
         if (staff.value > this.getMaxPopulation(this.level).value) {
-            throw new AssertionError("Staff too high for this level.");
+            throw new IllegalArgumentException("Staff too high for this level.");
         }
         this.staff = staff;
     }
@@ -231,7 +232,7 @@ public final class BaseBuilding implements Building {
     @Override
     public Duration getNextLevelTimeToBuild() {
         if (this.isMaxLevel()) {
-            throw new AssertionError("Already at max level.");
+            throw new IllegalArgumentException("Already at max level.");
         }
         return this.data.getTimeToBuild(this.level.add(1));
     }
@@ -239,7 +240,7 @@ public final class BaseBuilding implements Building {
     @Override
     public ResourceValue getNextLevelPrice() {
         if (this.isMaxLevel()) {
-            throw new AssertionError("Already at max level.");
+            throw new IllegalArgumentException("Already at max level.");
         }
         return this.data.getPrice(this.level.add(1));
     }

@@ -24,8 +24,8 @@
 
 package be.yildizgames.engine.feature.city.building;
 
+import be.yildizgames.common.model.Level;
 import be.yildizgames.engine.feature.city.CityId;
-import be.yildizgames.engine.feature.city.Level;
 import be.yildizgames.engine.feature.city.building.staff.Staff;
 import be.yildizgames.engine.feature.resource.ResourceValue;
 import be.yildizgames.engine.feature.resource.bonus.BonusResources;
@@ -141,37 +141,37 @@ public class BaseBuildingTest {
 
     @Test
     public void testConstructorNullCity() {
-        Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(null, OK_DATA, OK_POSITION, OK_LEVEL, OK_STAFF));
+        Assertions.assertThrows(NullPointerException.class, () -> new BaseBuilding(null, OK_DATA, OK_POSITION, OK_LEVEL, OK_STAFF));
     }
 
     @Test
     public void testConstructorNullData() {
-        Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, null, OK_POSITION, OK_LEVEL, OK_STAFF));
+        Assertions.assertThrows(NullPointerException.class, () -> new BaseBuilding(OK_CITY, null, OK_POSITION, OK_LEVEL, OK_STAFF));
     }
 
     @Test
     public void testConstructorNullPosition() {
-        Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, null, OK_LEVEL, OK_STAFF));
+        Assertions.assertThrows(NullPointerException.class, () -> new BaseBuilding(OK_CITY, OK_DATA, null, OK_LEVEL, OK_STAFF));
     }
 
     @Test
     public void testConstructorNullLevel() {
-        Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, null, OK_STAFF));
+        Assertions.assertThrows(NullPointerException.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, null, OK_STAFF));
     }
 
     @Test
     public void testConstructorNegativeStaff() {
-        Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, Staff.valueOf(-1)));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, Staff.valueOf(-1)));
     }
 
     @Test
     public void testConstructorLevelTooHigh() {
-        Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, MAX_LEVEL.add(1), OK_STAFF));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, MAX_LEVEL.add(1), OK_STAFF));
     }
 
     @Test
     public void testConstructorAssignedStaffTooHigh() {
-        Assertions.assertThrows(AssertionError.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, Staff.valueOf(35)));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, Staff.valueOf(35)));
     }
 
     @Test
@@ -185,13 +185,13 @@ public class BaseBuildingTest {
     @Test
     public void testTooHighStaff() {
         Building b = givenABuilding();
-        Assertions.assertThrows(AssertionError.class, () -> b.setStaff(Staff.valueOf(35)));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> b.setStaff(Staff.valueOf(35)));
     }
 
     @Test
     public void testNegativeStaff() {
         Building b = new BaseBuilding(OK_CITY, OK_DATA, OK_POSITION, OK_LEVEL, OK_STAFF);
-        Assertions.assertThrows(AssertionError.class, () -> b.setStaff(Staff.valueOf(-1)));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> b.setStaff(Staff.valueOf(-1)));
     }
 
     @Test
@@ -204,13 +204,13 @@ public class BaseBuildingTest {
     @Test
     public void testSetLevelNull() {
         Building b = givenABuilding();
-        Assertions.assertThrows(AssertionError.class, () -> b.setLevel(null));
+        Assertions.assertThrows(NullPointerException.class, () -> b.setLevel(null));
     }
 
     @Test
     public void testSetLevelTooHigh() {
         Building b = givenABuilding();
-        Assertions.assertThrows(AssertionError.class, () -> b.setLevel(MAX_LEVEL.add(1)));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> b.setLevel(MAX_LEVEL.add(1)));
     }
 
     @Test
@@ -223,7 +223,7 @@ public class BaseBuildingTest {
     public void testGetNextLevelPriceLevelMax() {
         Building b = givenABuilding();
         b.setLevel(MAX_LEVEL);
-        Assertions.assertThrows(AssertionError.class, b::getNextLevelPrice);
+        Assertions.assertThrows(IllegalArgumentException.class, b::getNextLevelPrice);
     }
 
     @Test
@@ -236,7 +236,7 @@ public class BaseBuildingTest {
     public void testGetNextLevelTimeLevelMax() {
         Building b = givenABuilding();
         b.setLevel(MAX_LEVEL);
-        Assertions.assertThrows(AssertionError.class, b::getNextLevelTimeToBuild);
+        Assertions.assertThrows(IllegalArgumentException.class, b::getNextLevelTimeToBuild);
     }
 
     private Building givenABuilding() {
