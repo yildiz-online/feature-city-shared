@@ -47,11 +47,6 @@ import java.util.Set;
  *
  * @author Grégory Van den Borre
  */
-//@specfield id:EntityId:BaseCity unique id.
-//@specfield name:BaseCity name in the game, must not be unique, can only contains alpha numeric characters, size is 1-10.
-//@specfield owner:PlayerId:Player owner of this city.
-//@specfield producer:ResourcesProducer:Resource production for this city.
-//@specfield position:Point3D:BaseCity position in the world.
 public class BaseCity<T extends Building, D extends BuildingData> implements City<T, D> {
 
     /**
@@ -77,7 +72,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
     /**
      * Data for buildings in the city.
      */
-    private final Map<BuildingType, D> datas;
+    private final Map<BuildingType, D> data;
 
     private final PlayerId owner;
 
@@ -89,14 +84,14 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
      * @param id The entity representing this city in the world.
      * @param initialResource The resources available in the city when creating it.
      * @param positionOffset Building positions.
-     * @param datas List of building types and their data available.
+     * @param data List of building types and their data available.
      */
-    protected BaseCity(final CityId id, final PlayerId owner, final Point3D position, final ResourceValue initialResource, final Point3D[] positionOffset, Map<BuildingType, D> datas) {
+    protected BaseCity(final CityId id, final PlayerId owner, final Point3D position, final ResourceValue initialResource, final Point3D[] positionOffset, Map<BuildingType, D> data) {
         super();
         this.id = id;
         this.position = position;
         this.owner = owner;
-        this.datas = datas;
+        this.data = data;
         this.buildings = new ArrayList<>();
         this.positionOffset = Arrays.copyOf(positionOffset, positionOffset.length);
         for (int i = 0; i < this.positionOffset.length; i++) {
@@ -107,7 +102,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
 
     @Override
     public final D getByType(final BuildingType type) {
-        return this.datas.get(type);
+        return this.data.get(type);
     }
 
     @Override
@@ -149,7 +144,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
 
     @Override
     public final Set<BuildingType> getAllowedType() {
-        Set<BuildingType> l = this.datas.keySet();
+        Set<BuildingType> l = this.data.keySet();
         for (Building b : this.buildings) {
             l.remove(b.getType());
         }
@@ -158,7 +153,7 @@ public class BaseCity<T extends Building, D extends BuildingData> implements Cit
 
     @Override
     public final List<D> getAllType() {
-        return new ArrayList<>(this.datas.values());
+        return new ArrayList<>(this.data.values());
     }
 
     @Override
